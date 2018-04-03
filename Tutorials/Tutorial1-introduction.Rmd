@@ -2,7 +2,10 @@
 title: "Tutorial 1 - An introduction to circular data"
 author: "Arjan Huizing"
 date: "2 April 2018"
-output: html_document
+output:
+  pdf_document: default
+  word_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -61,11 +64,20 @@ arrows.circular(x=mean(data.rad),col="red")
 
 As you can see, we specified two very different datasets. Specifying the incorrect unit of measurement is a simple mistake one can make when analyzing circular data.
 
-Other than a mean direction, we can also calculate a mean resultant length using **rho.circular**. This is a measure of *concentration* that can take on values between zero and one. Zero indicates that the dataset is completely spread out across the circle, where one indicates all datapoints are concentrated at a single location.
+Other than a mean direction, we can also calculate a mean resultant length using **rho.circular**. This is a measure of *concentration* that can take on values between zero and one. One indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion.
 
 ```{r}
 rho.circular(data.deg)
 rho.circular(data.rad)
 ```
 
-Our dataset in radians has a higher concentration of values than our dataset in degrees. This is congruent with our plotted data.
+Our dataset in radians has a higher concentration of values than our dataset in degrees. This is congruent with the spread visible on the plots we made earlier.
+
+Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. Both values are based on the value for the mean resultant length. In the circular package, the variance is derived by taking the inverse of the mean resultant length and multiplying that value by 2. The angular deviance is the square root of the angular variance.
+
+
+```{r}
+angular.variance(data.deg)
+angular.deviation(data.deg)
+```
+
