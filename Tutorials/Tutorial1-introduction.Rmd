@@ -63,22 +63,23 @@ In our dataset with values in radians, all values except for 0 exceed 6.28. Thus
 data.rad <- as.circular(c(0, 90, 210, 270, 360) * pi / 180, units = "radians")
 ```
 or even just
-```{r}
+```{r, eval = FALSE}
 data.rad <- conversion.circular(data.deg, units = "radians")
 ```
 
-This shows that we must be very careful: the data entered in `as.circular` must match the units that is given. For the sake of this tutorial, we will keep working with the original dataset, which interprets the values 0, 90, 210, 270 and 360 as radians directly. 
+This shows that we must be very careful: the data entered in `as.circular` must match the units that are given. For the sake of this tutorial, we will keep working with the original dataset, which interprets the values 0, 90, 210, 270 and 360 as radians directly. 
 
 
+## Plotting
 
 We can get a visual representation of both datasets using the **plot.circular** function. The function **arrows.circular** allow us to add arrows to the plot, which I have used to mark the mean directions in both.
 
 ```{r}
-par(mfrow=c(1,2))
+par(mfrow = c(1,2))
 plot(data.deg, main = "Observations in degrees")
-arrows.circular(x=mean(data.deg),col="red")
+arrows.circular(x = mean(data.deg),col = "red")
 plot(data.rad, main = "Observations in radians")
-arrows.circular(x=mean(data.rad),col="red")
+arrows.circular(x = mean(data.rad),col = "red")
 ```
 
 As you can see, we specified two very different datasets. Specifying the incorrect unit of measurement is a simple mistake one can make when analyzing circular data.
