@@ -24,12 +24,12 @@ Depending on the type of data we want to analyze, we use different methods. For 
 ##Circular descriptives in R
 To get started, install and load the package *circular* in R. This package contains functions for analyzing as well as plotting circular data.
 ```{r message=FALSE, warning=FALSE}
-#install.packages("circular")
+# install.packages("circular")
 library(circular)
 ```
 &nbsp;
 
-When using circular data there are two types of measurement that are commonly used. Degrees and radians. A circle has a total of 360 degrees, or a total of 2pi (6.28) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (eg 361 degrees equals 1 degree). To see this in action, we specify two small datasets, one in degrees and the other in radians. For this, we use the function **as.circular** and specify the measurement type with the argument units.
+For circular data there are two units of measurement that are commonly used, which are degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (eg 361 degrees equals 1 degree). To see this in action, we specify two small datasets, one in degrees and the other in radians. For this, we use the function **as.circular** and specify the measurement type with the argument units.
 
 ```{r message=FALSE, warning=FALSE}
 data.deg <- as.circular(c(0, 90, 210, 270, 360), units = "degrees")
