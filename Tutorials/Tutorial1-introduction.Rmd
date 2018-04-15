@@ -57,7 +57,19 @@ mean_rad <- mean(data.rad)
 
 As we can see, the mean, mean direction of values in degrees and mean direction of values in radians are all very different. Where the regular mean simply takes the sum of all values and divides them by the amount of values, the mean direction takes account of the fact that data is on a circular continuum. In the dataset with values in degrees, the datapoints 90 and 270 are both the same distance from 0. Finally, the values of 0 and 360 are identical as well. The resultant mean direction is `r round(mean_deg, 1)` degrees, which is the same as `r round(mean_deg %% 360, 1)` degrees.
 
-In our dataset with values in radians, all values except for 0 exceed 6.28. Thus when calculating the mean direction, all these values are rescaled. The mean direction is `r round(mean_rad, 1)`, which is about `r round(mean_rad * 180/pi, 0)` degrees.
+In our dataset with values in radians, all values except for 0 exceed 6.28. Thus when calculating the mean direction, all these values are rescaled. The mean direction is `r round(mean_rad, 1)`, which is about `r round(mean_rad * 180/pi, 0)` degrees. In fact, the way we entered our data in radians suggests that we first wanted to convert a set of data in degrees to radians and then work with them as radians. To do that, we could have done;
+
+```{r, eval = FALSE}
+data.rad <- as.circular(c(0, 90, 210, 270, 360) * pi / 180, units = "radians")
+```
+or even just
+```{r}
+data.rad <- conversion.circular(data.deg, units = "radians")
+```
+
+This shows that we must be very careful: the data entered in `as.circular` must match the units that is given. For the sake of this tutorial, we will keep working with the original dataset, which interprets the values 0, 90, 210, 270 and 360 as radians directly. 
+
+
 
 We can get a visual representation of both datasets using the **plot.circular** function. The function **arrows.circular** allow us to add arrows to the plot, which I have used to mark the mean directions in both.
 
