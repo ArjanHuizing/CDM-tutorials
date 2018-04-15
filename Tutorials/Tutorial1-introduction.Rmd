@@ -93,7 +93,7 @@ rho.circular(data.rad)
 
 Our dataset in radians has a higher concentration of values than our dataset in degrees. This is congruent with the spread visible on the plots we made earlier.
 
-Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. Both values are based on the value for the mean resultant length. In the circular package, the variance is derived by taking the inverse of the mean resultant length and multiplying that value by 2. The angular deviance is the square root of the angular variance.
+Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. Both values are based on the value for the mean resultant length. In the `circular` package, the variance is derived by taking the inverse of the mean resultant length and multiplying that value by 2. The angular deviance is the square root of the angular variance.
 
 
 ```{r}
