@@ -76,7 +76,7 @@ rho.circular(data.deg)
 rho.circular(data.rad)
 ```
 
-Our dataset in radians has a higher concentration of values than our dataset in degrees. This is congruent with the spread visible on the plots we made earlier.
+Our dataset in radians has a higher concentration of values than our dataset in degrees. This is in line with the spread visible on the plots we made earlier.
 
 Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. The variance is the inverse of the mean resultant length. The function **var.circular** will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^0.5\).
 

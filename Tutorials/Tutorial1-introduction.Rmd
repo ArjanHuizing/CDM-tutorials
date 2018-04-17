@@ -3,8 +3,8 @@ title: "Tutorial 1 - An introduction to circular data"
 author: "Arjan Huizing"
 date: "2 April 2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 
@@ -45,7 +45,7 @@ plot(as.circular(Maps[Maps$Maze == 0 & Maps$Trial.type == 0, 5], units = "degree
 plot(as.circular(Maps[Maps$Maze == 1 & Maps$Trial.type == 0, 5], units = "degrees"), main = "Non-Euclidian maze")
 ```
 
-Note how the output indicates the values in degrees. Measuring circular data in degrees is one of the two common measurement types. A second way to express angles on a circle is by using radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\) radians.
+Note how the output indicates the values in degrees. Measuring circular data in degrees is one of the two common measurement types. A second way to express angles on a circle is by using radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi \approx 6.28\) radians.
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
 par(mfrow=c(1,2))
@@ -64,7 +64,7 @@ radians
 #Converting the radians back into degrees
 180*(radians/pi)
 ```
-So as we can see \(90°\approx 1.57rad\), or \(\pi /2\). 
+So as we can see \(90\circ = \pi /2\) radians.
 
 &nbsp;
 
