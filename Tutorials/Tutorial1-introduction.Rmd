@@ -3,101 +3,70 @@ title: "Tutorial 1 - An introduction to circular data"
 author: "Arjan Huizing"
 date: "2 April 2018"
 output:
+  pdf_document: default
   html_document: default
   word_document: default
-  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(circular)
+library(bpnreg)
 ```
 
 ## What is circular data?
+
 Most researchers will be familiar with the concept of measurement levels of variables. The most popular two being continuous data and categorical data. Circular data is another type of measurement with properties that distinguish it from other data types. The main property of circular data is the fact that it is periodical. What this means is that there is no true start or end point, but rather a continuous scale that loops back on itself. 
 
 An example would be the time of day as represented on the clock. As time passes the hands on the face of a clock will inevitably be bound to pass the same 12 hours over and over. This also means that distances can not be interpreted as linear. The difference in time between 1 AM and 3 AM is the same as the distance between 11 PM and 1 AM, that is, two hours. Another quality of circular data is that every value can be seen to have an opposite value. When we analyze directions on a compass, we would say that north is the opposite of south, and east is the opposite of west. Circumplex models also use this quality to create a continuum of related values, where opposite values are 180 degrees apart. Examples of this from social and behavioural science are Schwartz' theory of basic values, Russel's mood scale and Leary's interpersonal circumplex.
 
-Depending on the type of data we want to analyze, we use different methods. For example, if we want to predict a categorical outcome a binomial or multinomial logistic regression is prefered to using a linear regression. In the same vein, circular data should be analyzed using methods tailored to the unique attributes of such data. Analyzing circular data as either categorical or continuous data may lead to issues of validity, as even something as simple as a mean value can result in very different outcomes if analyzed as continous instead of circular as we will see.
+&nbsp;
+
+*[Image of circumplex here?]*
 
 &nbsp;
 
-##Circular descriptives in R
-To get started, install and load the package *circular* in R. This package contains functions for analyzing as well as plotting circular data.
-```{r message=FALSE, warning=FALSE}
-# install.packages("circular")
-library(circular)
-```
+Circular data can also be used to analyse directions. In a study by Warren et al. (2017), 39 participants were asked to navigate a Euclidian and a non-Euclidian maze using a virtual reality headset. The Euclidian and non-Euclidian mazes were identical except for the presense of two 'wormholes' that would transport participants instantly. The movement of participants through these mazes was tracked for all eight trials. The mazes were designed in a way that the angular error would be higher if participants opted to use wormholes present in the non-Euclidian maze. 
+
+The researchers then used this data to test whether participants were capable of learning to navigate a space using these wormholes.
+
 &nbsp;
 
-For circular data there are two units of measurement that are commonly used, which are degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (e.g. 361 degrees equals 1 degree). To see this in action, we specify two small datasets, one in degrees and the other in radians. For this, we use the function **as.circular** and specify the measurement type with the argument units.
+*[Image of Mazes here?]*
 
-```{r message=FALSE, warning=FALSE}
-data.deg <- as.circular(c(0, 90, 210, 270, 360), units = "degrees")
-data.rad <- as.circular(c(0, 90, 210, 270, 360), units = "radians")
-```
 &nbsp;
 
-The linear mean of the values we have specified is 186. 
-```{r}
-mean(c(0, 90, 210, 270, 360))
+A subset of the data is displayed below, containing the angular error in degrees of 20 participants in the standard trials. Here we see a noticable difference in direction between the Euclidian maze and the non-Euclidian maze.
+
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+par(mfrow=c(1,2))
+plot(as.circular(Maps[Maps$Maze == 0 & Maps$Trial.type == 0, 5], units = "degrees"), main = "Euclidian maze")
+plot(as.circular(Maps[Maps$Maze == 1 & Maps$Trial.type == 0, 5], units = "degrees"), main = "Non-Euclidian maze")
 ```
 
-Now let us calculate the mean direction in both circular datasets. The package *circular* contains the function **mean.circular**, which integrates with the base R function for calculating the mean. Lets give it a try.
+Note how the output indicates the values in degrees. Measuring circular data in degrees is one of the two common measurement types. A second way to express angles on a circle is by using radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\) radians.
 
-```{r message=FALSE, warning=FALSE, paged.print=FALSE}
-mean(data.deg)
-mean(data.rad)
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+par(mfrow=c(1,2))
+plot(as.circular(Maps[Maps$Maze == 0 & Maps$Trial.type == 0, 7], units = "radians"), main = "Euclidian maze")
+plot(as.circular(Maps[Maps$Maze == 1 & Maps$Trial.type == 0, 7], units = "radians"), main = "Non-Euclidian maze")
 ```
 
-```{r, include=FALSE}
-mean_deg <- mean(data.deg)
-mean_rad <- mean(data.rad)
-```
-
-
-As we can see, the mean, mean direction of values in degrees and mean direction of values in radians are all very different. Where the regular mean simply takes the sum of all values and divides them by the amount of values, the mean direction takes account of the fact that data is on a circular continuum. In the dataset with values in degrees, the datapoints 90 and 270 are both the same distance from 0. Finally, the values of 0 and 360 are identical as well. The resultant mean direction is `r round(mean_deg, 1)` degrees, which is the same as `r round(mean_deg %% 360, 1)` degrees.
-
-In our dataset with values in radians, all values except for 0 exceed 6.28. Thus when calculating the mean direction, all these values are rescaled. The mean direction is `r round(mean_rad, 1)`, which is about `r round(mean_rad * 180/pi, 0)` degrees. In fact, the way we entered our data in radians suggests that we first wanted to convert a set of data in degrees to radians and then work with them as radians. To do that, we could have done;
-
-```{r, eval = FALSE}
-data.rad <- as.circular(c(0, 90, 210, 270, 360) * pi / 180, units = "radians")
-```
-or even just
-```{r, eval = FALSE}
-data.rad <- conversion.circular(data.deg, units = "radians")
-```
-
-This shows that we must be very careful: the data entered in `as.circular` must match the units that are given. For the sake of this tutorial, we will keep working with the original dataset, which interprets the values 0, 90, 210, 270 and 360 as radians directly. 
-
-
-## Plotting
-
-We can get a visual representation of both datasets using the **plot.circular** function. The function **arrows.circular** allow us to add arrows to the plot, which I have used to mark the mean directions in both.
+Values in degrees are easily converted to radians and vice versa.
 
 ```{r}
-par(mfrow = c(1,2))
-plot(data.deg, main = "Observations in degrees")
-arrows.circular(x = mean(data.deg),col = "red")
-plot(data.rad, main = "Observations in radians")
-arrows.circular(x = mean(data.rad),col = "red")
+#Converting 90 degrees into radians
+degrees <- 90
+radians <- degrees*(pi/180)
+radians
+
+#Converting the radians back into degrees
+180*(radians/pi)
 ```
+So as we can see \(90°\approx 1.57rad\), or \(\pi /2\). 
 
-As you can see, we specified two very different datasets. Specifying the incorrect unit of measurement is a simple mistake one can make when analyzing circular data.
+&nbsp;
 
-Other than a mean direction, we can also calculate a mean resultant length using **rho.circular**. This is a measure of *concentration* that can take on values between zero and one. One indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion.
-
-```{r}
-rho.circular(data.deg)
-rho.circular(data.rad)
-```
-
-Our dataset in radians has a higher concentration of values than our dataset in degrees. This is congruent with the spread visible on the plots we made earlier.
-
-Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. Both values are based on the value for the mean resultant length. In the `circular` package, the variance is derived by taking the inverse of the mean resultant length and multiplying that value by 2. The angular deviance is the square root of the angular variance.
-
-
-```{r}
-angular.variance(data.deg)
-angular.deviation(data.deg)
-```
+Depending on the type of data we want to analyze, we use different methods. For example, if we want to predict a categorical outcome a binomial or multinomial logistic regression is prefered to using a linear regression. In the same vein, circular data should be analyzed using methods tailored to the unique attributes of such data. Analyzing circular data as either categorical or continuous data may lead to issues of validity, as even something as simple as a mean value can result in very different outcomes if analyzed as continous instead of circular as we will see in tutorial 2.
 
