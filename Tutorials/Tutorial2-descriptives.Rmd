@@ -9,6 +9,8 @@ output:
 
 ## Circular descriptives in R
 
+In the previous tutorial we discussed what 
+
 To get started, install and load the package *circular* in R. This package contains functions for analyzing as well as plotting circular data.
 ```{r message=FALSE, warning=FALSE}
 # install.packages("circular")
