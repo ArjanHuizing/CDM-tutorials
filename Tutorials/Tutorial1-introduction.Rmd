@@ -24,7 +24,7 @@ An example would be the time of day as represented on the clock. As time passes 
 
 ![Circumplex model (as shown in Herbon, Peter, Markert, van der Meer and Voskamp, 2005), a compass and a clock are all examples of circular data][circular-examples]
 
-[circular-examples]: https://cdm.sites.uu.nl/wp-content/uploads/sites/31/2018/04/circular-data-examples.jpg "Russel's circumplex model, a compass and a clock"
+[circular-examples]: https://raw.githubusercontent.com/ArjanHuizing/CDM-tutorials/master/Images/circular-data-examples.jpg "Russel's circumplex model, a compass and a clock"
 
 &nbsp;
 
@@ -36,7 +36,7 @@ The researchers then used this data to test whether participants were capable of
 
 ![The virtual mazes A (Euclidian) and B (non-Euclidian) used in the study by Warren et al. (2017).][mazes]
 
-[mazes]: https://www.researchgate.net/profile/William_Warren12/publication/317297731/figure/fig1/AS:545581846065154@1507088256490/The-virtual-hedge-maze-A-Euclidean-environment-B-Non-Euclidean-environment-with-two.png "Virtual mazes from Warren et al. (2017)"
+[mazes]: https://raw.githubusercontent.com/ArjanHuizing/CDM-tutorials/master/Images/mazes-warren.jpg "Virtual mazes from Warren et al. (2017)"
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
