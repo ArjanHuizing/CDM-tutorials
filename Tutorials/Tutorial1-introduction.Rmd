@@ -65,20 +65,19 @@ Values in degrees are easily converted to radians and vice versa. The formulae f
 
 \(180* (radians/ \pi) = degrees\)
 
-&nbsp;
 
 ```{r}
 #Converting degrees into radians
 90*(pi/180)
 ```
 As we can see \(90\circ \approx 1.57\), and \(\pi /2\ \approx 1.57\)
-&nbsp;
+
 
 ```{r}
 #Converting radians into degrees
 180*((pi/2)/pi)
 ```
-So it then follows that \(90\circ = \pi /2\) radians.
+So it then follows that \(\pi /2rad = 90\circ\).
 
 &nbsp;
 
