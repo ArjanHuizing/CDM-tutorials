@@ -3,13 +3,15 @@ title: "Tutorial 2 - Circular descriptives"
 author: "Arjan Huizing"
 date: "16 April 2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ## Circular descriptives in R
 
-In the previous tutorial we discussed what 
+In the previous tutorial we discussed what circular data is and how it is measured. In this tutorial we will start analyzing circular data. For the analyses of circular data we will be using the open source programming language R. R is available for Windows, MacOS and popular Linux distributions, and can be downloaded from <https://cran.r-project.org/>. 
+
+&nbsp;
 
 To get started, install and load the package *circular* in R. This package contains functions for analyzing as well as plotting circular data.
 ```{r message=FALSE, warning=FALSE}
@@ -17,12 +19,28 @@ To get started, install and load the package *circular* in R. This package conta
 library(circular)
 ```
 
-For circular data there are two units of measurement that are commonly used, which are degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (e.g. 361 degrees equals 1 degree). To see this in action, we specify two small datasets, one in degrees and the other in radians. For this, we use the function **as.circular** and specify the measurement type with the argument units.
+For circular data there are two units of measurement that are commonly used, which are degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\)) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (e.g. 361 degrees equals 1 degree). To see this in action, we specify two small datasets, one in degrees and the other in radians. For this, we use the function `as.circular` and specify the measurement type with the argument units.
 
 ```{r message=FALSE, warning=FALSE}
 data.deg <- as.circular(c(0, 90, 210, 270, 360), units = "degrees")
 data.rad <- as.circular(c(0, 90, 210, 270, 360), units = "radians")
 ```
+
+In our dataset with values in radians, all values except for 0 exceed 6.28. Thus when calculating the mean direction, all these values are rescaled. Instead of specifying the values of 0, 90, 210, 270 and 360, we specified the values 0, `r 90%%(2*pi)`, `r 210%%(2*pi)`, `r 270%%(2*pi)` and `r 360%%(2*pi)` radians. Remainders can be calculated in R using `%%`.
+
+&nbsp;
+
+```{r echo=FALSE}
+par(mfrow = c(1,2))
+plot(data.deg, main = "Observations in degrees")
+plot(data.rad, main = "Observations in radians")
+```
+
+This shows that we must be very careful: the data entered in `as.circular` must match the units that are given. For the sake of this tutorial, we will keep working with the dataset which interprets the values 0, 90, 210, 270 and 360 as degrees. 
+
+&nbsp;
+
+## The circular mean
 
 The linear mean of the values we have specified is 186. 
 
@@ -30,7 +48,7 @@ The linear mean of the values we have specified is 186.
 mean(c(0, 90, 210, 270, 360))
 ```
 
-Now let us calculate the mean direction in both circular datasets. The package *circular* contains the function **mean.circular**, which integrates with the base R function for calculating the mean. Lets give it a try.
+Now let us calculate the mean direction in both circular datasets. The package *circular* contains the function `mean.circular`, which integrates with the base R function for calculating the mean. Lets give it a try.
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 mean(data.deg)
@@ -59,7 +77,7 @@ This shows that we must be very careful: the data entered in `as.circular` must 
 
 ## Plotting
 
-We can get a visual representation of both datasets using the **plot.circular** function. The function **arrows.circular** allow us to add arrows to the plot, which I have used to mark the mean directions in both.
+We can get a visual representation of both datasets using the `plot.circular` function. The function `arrows.circular` allow us to add arrows to the plot, which I have used to mark the mean directions in both.
 
 ```{r}
 par(mfrow = c(1,2))
@@ -71,7 +89,7 @@ arrows.circular(x = mean(data.rad),col = "red")
 
 As you can see, we specified two very different datasets. Specifying the incorrect unit of measurement is a simple mistake one can make when analyzing circular data.
 
-Other than a mean direction, we can also calculate a mean resultant length using **rho.circular**. This is a measure of *concentration* that can take on values between zero and one. One indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion.
+Other than a mean direction, we can also calculate a mean resultant length using `rho.circular`. This is a measure of *concentration* that can take on values between zero and one. One indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion.
 
 ```{r}
 rho.circular(data.deg)
@@ -80,7 +98,7 @@ rho.circular(data.rad)
 
 Our dataset in radians has a higher concentration of values than our dataset in degrees. This is in line with the spread visible on the plots we made earlier.
 
-Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. The variance is the inverse of the mean resultant length. The function **var.circular** will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^0.5\).
+Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. The variance is the inverse of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^0.5\).
 
 ```{r}
 var(data.deg)
