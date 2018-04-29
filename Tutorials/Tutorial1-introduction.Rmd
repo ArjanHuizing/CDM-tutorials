@@ -61,7 +61,7 @@ plot(as.circular(numeric(0), units = "radians"), main = "Radians")
 
 Values in degrees are easily converted to radians and vice versa. The formulae for this are 
 
-\(degrees\circ*( \pi /180) = radians\)
+\(degrees^\circ*( \pi /180) = radians\)
 
 \(180* (radians/ \pi) = degrees\)
 
@@ -70,14 +70,14 @@ Values in degrees are easily converted to radians and vice versa. The formulae f
 #Converting degrees into radians
 90*(pi/180)
 ```
-As we can see \(90\circ \approx 1.57\), and \(\pi /2\ \approx 1.57\)
+As we can see \(90^\circ \approx 1.57\), and \(\pi /2\ \approx 1.57\)
 
 
 ```{r}
 #Converting radians into degrees
 180*((pi/2)/pi)
 ```
-So it then follows that \(\pi /2rad = 90\circ\).
+So it then follows that \(\pi /2rad = 90^\circ\).
 
 &nbsp;
 
