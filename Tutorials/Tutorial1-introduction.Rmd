@@ -77,7 +77,7 @@ As we can see \(90^\circ \approx 1.57\), and \(\pi /2\ \approx 1.57\)
 #Converting radians into degrees
 180/pi
 ```
-So it then follows that \(\pi /2rad = 90^\circ\).
+So it then follows that \(\pi /2 ~ \text{rad} = 90^\circ\).
 
 &nbsp;
 
