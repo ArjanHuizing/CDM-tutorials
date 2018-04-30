@@ -52,7 +52,7 @@ For the remainder of this tutorial, we will keep working with the dataset which 
 
 ## The circular mean
 
-A mean value in circular data is referred to as the *mean direction*. For example, the mean direction in a dataset with observations on a compass pointing north (\(0 \circ\)) and east (\(90 \circ\)) would be northeast (\(45 \circ\)). Although intuitively this makes sense, it often is not as straight forward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by $n$. Imagine the same scenario as before but with the compass indicating \(359 \circ\). Where a linear mean would drastically shift, the mean direction will barely change. 
+A mean value in circular data is referred to as the *mean direction*. For example, the mean direction in a dataset with observations on a compass pointing north (\(0 ^\circ\)) and east (\(90 ^\circ\)) would be northeast (\(45 ^\circ\)). Although intuitively this makes sense, it often is not as straight forward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by $n$. Imagine the same scenario as before but with the compass indicating \(359 ^\circ\). Where a linear mean would drastically shift, the mean direction will barely change. 
 
 To obtain the mean direction then, requires we use the sum of cosins (\(C = \sum \text{cos} \theta_i \)), sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is the square root of the sum of squared $C$ and $S$ values. The mean direction is then given by
 

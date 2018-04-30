@@ -3,8 +3,8 @@ title: "Tutorial 1 - An introduction to circular data"
 author: "Arjan Huizing"
 date: "2 April 2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 
@@ -73,7 +73,7 @@ Values in degrees are easily converted to radians and vice versa. The formulae f
 
 \(degrees^\circ*( \pi /180) = radians\)
 
-\(180* (radians/ \pi) = degrees\)
+\(radians (180/ \pi) = degrees\)
 
 
 ```{r}
@@ -85,7 +85,7 @@ As we can see \(90^\circ \approx 1.57\), and \(\pi /2\ \approx 1.57\)
 
 ```{r}
 #Converting radians into degrees
-180/pi
+pi/2*(180/pi)
 ```
 So it then follows that \(\pi /2 ~ \text{rad} = 90^\circ\).
 
