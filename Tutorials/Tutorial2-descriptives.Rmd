@@ -3,8 +3,8 @@ title: "Tutorial 2 - Circular descriptives"
 author: "Arjan Huizing"
 date: "16 April 2018"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 ---
 
 ## Circular descriptives in R
@@ -13,7 +13,7 @@ In the previous tutorial we discussed what circular data is and how it is measur
 
 &nbsp;
 
-To get started, install and load the package *circular* in R. This package contains functions for analyzing as well as plotting circular data.
+To get started, install and load the package `circular` in R. This package contains functions for analyzing as well as plotting circular data.
 ```{r message=FALSE, warning=FALSE}
 # install.packages("circular")
 library(circular)
@@ -48,7 +48,22 @@ The linear mean of the values we have specified is 186.
 mean(c(0, 90, 210, 270, 360))
 ```
 
-Now let us calculate the mean direction in both circular datasets. The package *circular* contains the function `mean.circular`, which integrates with the base R function for calculating the mean. Lets give it a try.
+A mean value in circular data is referred to as the *mean direction*. For example, the mean direction in a dataset with observations on a compass pointing north (\(0 \circ\)) and east (\(90 \circ\)) would be northeast (\(45 \circ\)). Although intuitively this makes sense, it often is not as straight forward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by $n$. Imagine the same scenario as before but with the compass indicating \(359 \circ\). Where a linear mean would drastically shift, the mean direction will barely change. 
+
+To obtain the mean direction then, requires we use the sum of cosins (\(C = \sum \text{cos} \theta_i \)), sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is the square root of the sum of squared $C$ and $S$ values. The mean direction is then given by
+
+\begin{align}
+  \overline{\theta}  &= 
+    \begin{cases}
+      tan^{-1} (S/C)                   &  S > 0, C > 0\\ 
+      tan^{-1} (S/C) + \pi             &  C < 0\\ 
+      tan^{-1} (S/C) + 2\pi            &  S < 0, C > 0\\ 
+    \end{cases}
+    \text{, (Fisher, 1995)}
+\end{align}
+\
+
+The mean direction can easily be calculated in R. The package `circular` contains the function `mean.circular`, which integrates with the base R function for calculating the mean. Lets give it a try.
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 mean(data.deg)
@@ -60,7 +75,7 @@ mean_deg <- mean(data.deg)
 mean_rad <- mean(data.rad)
 ```
 
-As we can see, the mean, mean direction of values in degrees and mean direction of values in radians are all very different. Where the regular mean simply takes the sum of all values and divides them by the amount of values, the mean direction takes account of the fact that data is on a circular continuum. In the dataset with values in degrees, the datapoints 90 and 270 are both the same distance from 0. Finally, the values of 0 and 360 are identical as well. The resultant mean direction is `r round(mean_deg, 1)` degrees, which is the same as `r round(mean_deg %% 360, 1)` degrees.
+As we can see, the mean, mean direction of values in degrees and mean direction of values in radians are all very different. Where the regular mean simply takes the sum of all values and divides them by the amount of values, the mean direction takes account of the fact that data is on a circular continuum. In the dataset with values in degrees, the datapoints 90 and 270 are both the same distance from 0. Finally, the values of 0 and 360 are identical as well. The resultant mean direction is `r round(mean_deg, 1)` degrees, which is equal to `r round(mean_deg %% 360, 1)` degrees.
 
 In our dataset with values in radians, all values except for 0 exceed 6.28. Thus when calculating the mean direction, all these values are rescaled. The mean direction is `r round(mean_rad, 1)`, which is about `r round(mean_rad * 180/pi, 0)` degrees. In fact, the way we entered our data in radians suggests that we first wanted to convert a set of data in degrees to radians and then work with them as radians. To do that, we could have done;
 
@@ -72,33 +87,18 @@ or even just
 data.rad <- conversion.circular(data.deg, units = "radians")
 ```
 
-This shows that we must be very careful: the data entered in `as.circular` must match the units that are given. For the sake of this tutorial, we will keep working with the original dataset, which interprets the values 0, 90, 210, 270 and 360 as radians directly. 
 
-
-## Plotting
-
-We can get a visual representation of both datasets using the `plot.circular` function. The function `arrows.circular` allow us to add arrows to the plot, which I have used to mark the mean directions in both.
-
-```{r}
-par(mfrow = c(1,2))
-plot(data.deg, main = "Observations in degrees")
-arrows.circular(x = mean(data.deg),col = "red")
-plot(data.rad, main = "Observations in radians")
-arrows.circular(x = mean(data.rad),col = "red")
-```
-
-As you can see, we specified two very different datasets. Specifying the incorrect unit of measurement is a simple mistake one can make when analyzing circular data.
+## Measures of concentration and spread
 
 Other than a mean direction, we can also calculate a mean resultant length using `rho.circular`. This is a measure of *concentration* that can take on values between zero and one. One indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion.
 
 ```{r}
 rho.circular(data.deg)
-rho.circular(data.rad)
 ```
 
 Our dataset in radians has a higher concentration of values than our dataset in degrees. This is in line with the spread visible on the plots we made earlier.
 
-Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. The variance is the inverse of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^0.5\).
+Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. The variance is the inverse of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\).
 
 ```{r}
 var(data.deg)
