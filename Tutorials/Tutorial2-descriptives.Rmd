@@ -3,8 +3,8 @@ title: "Tutorial 2 - Circular descriptives"
 author: "Arjan Huizing"
 date: "16 April 2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ## Circular descriptives in R
