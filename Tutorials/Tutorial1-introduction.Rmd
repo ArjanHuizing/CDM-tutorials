@@ -3,8 +3,8 @@ title: "Tutorial 1 - An introduction to circular data"
 author: "Arjan Huizing"
 date: "2 April 2018"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
   word_document: default
 ---
 
@@ -23,7 +23,7 @@ Most researchers will be familiar with the concept of measurement levels of vari
 An example would be the time of day as represented on the clock. As time passes the hands on the face of a clock will inevitably be bound to pass the same 12 hours over and over. This also means that distances can not be interpreted as linear. The difference in time between 1 AM and 3 AM is the same as the distance between 11 PM and 1 AM, that is, two hours. Another quality of circular data is that every value can be seen to have an opposite value. When we analyze directions on a compass, we would say that north is the opposite of south, and east is the opposite of west. Circumplex models also use this quality to create a continuum of related values, where opposite values are 180 degrees apart. Examples of this from social and behavioural science are Schwartz' theory of basic values, Russel's mood scale and Leary's interpersonal circumplex. A third measurement that is circular is that of directions, such as those found on a compass.
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, out.width = "500px"}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, out.width = '500px'}
 include_graphics(path = "C:/Users/Arjan/Documents/GitHub/CDM-tutorials/Images/circular-data-examples.jpg")
 ```
 
@@ -39,7 +39,7 @@ The researchers then used this data to test whether participants were capable of
 
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, out.width = "500px"}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, out.width = '500px'}
 include_graphics(path = "C:/Users/Arjan/Documents/GitHub/CDM-tutorials/Images/mazes-warren.jpg")
 ```
 
