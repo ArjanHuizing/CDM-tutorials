@@ -19,14 +19,14 @@ To get started, install and load the package `circular` in R. This package conta
 library(circular)
 ```
 
-For circular data there are two units of measurement that are commonly used, which are degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\)) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (e.g. 361 degrees equals 1 degree). To see this in action, we specify two small datasets, one in degrees and the other in radians. For this, we use the function `as.circular` and specify the measurement type with the argument units.
+For circular data there are two units of measurement that are commonly used, degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\)) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (e.g. 361 degrees equals 1 degree). To see this in action, we specify two small datasets, one in degrees and the other in radians. For this, we use the function `as.circular` and specify the measurement type with the argument units.
 
 ```{r message=FALSE, warning=FALSE}
 data.deg <- as.circular(c(0, 90, 210, 270, 360), units = "degrees")
 data.rad <- as.circular(c(0, 90, 210, 270, 360), units = "radians")
 ```
 
-In our dataset with values in radians, all values except for 0 exceed 6.28. Thus when calculating the mean direction, all these values are rescaled. Instead of specifying the values of 0, 90, 210, 270 and 360, we specified the values 0, `r 90%%(2*pi)`, `r 210%%(2*pi)`, `r 270%%(2*pi)` and `r 360%%(2*pi)` radians. Remainders can be calculated in R using `%%`.
+In our dataset with values in radians, all values except for 0 exceed 6.28. Thus when calculating the mean direction, all these values are rescaled. Instead of specifying the values of 0, 90, 210, 270 and 360, we specified the values 0, `r 90%%(2*pi)`, `r 210%%(2*pi)`, `r 270%%(2*pi)` and `r 360%%(2*pi)` radians. Remainders can be calculated in R using `%%`, the modulo operator, e.g. 90`%%`\(2\pi\) = `r 90%%(2*pi)`.
 
 &nbsp;
 
@@ -52,9 +52,9 @@ For the remainder of this tutorial, we will keep working with the dataset which 
 
 ## The circular mean
 
-A mean value in circular data is referred to as the *mean direction*. For example, the mean direction in a dataset with observations on a compass pointing north (\(0 ^\circ\)) and east (\(90 ^\circ\)) would be northeast (\(45 ^\circ\)). Although intuitively this makes sense, it often is not as straight forward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by $n$. Imagine the same scenario as before but with the compass indicating \(359 ^\circ\). Where a linear mean would drastically shift, the mean direction will barely change. 
+A mean value in circular data is referred to as the *mean direction*. For example, the mean direction in a dataset with observations on a compass pointing north (\(0 ^\circ\)) and east (\(90 ^\circ\)) would be northeast (\(45 ^\circ\)). Although intuitively this makes sense, it often is not as straightforward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by $n$. Imagine the same scenario as before but with the compass indicating \(359 ^\circ\) instead of (\(0 ^\circ\)). Where a linear mean would drastically shift, the mean direction will barely change. 
 
-To obtain the mean direction then, requires we use the sum of cosins (\(C = \sum \text{cos} \theta_i \)), sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is the square root of the sum of squared $C$ and $S$ values. The mean direction is then given by
+To obtain the mean direction then, requires us to use the sum of cosines (\(C = \sum \text{cos} \theta_i \)), sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is the square root of the sum of squared $C$ and $S$ values. The mean direction is then given by:
 
 \begin{align}
   \overline{\theta}  &= 
@@ -82,7 +82,7 @@ mean(data.deg)
 mean_deg <- mean(data.deg)
 ```
 
-As we can see, the mean and the mean direction of values in degrees are very different. Where the regular mean simply takes the sum of all values and divides them by the amount of values, the mean direction takes account of the fact that data is on a circular continuum. In the circular dataset, the datapoints 90 and 270 are both the same distance from 0. Finally, the values of 0 and 360 are identical. The resultant mean direction is `r round(mean_deg, 1)` degrees, which is equal to `r round(mean_deg %% 360, 1)` degrees.
+As we can see, the mean and the mean direction of values in degrees are very different. Where the regular mean simply takes the sum of all values and divides them by the amount of values, the mean direction takes account of the fact that the data is defined on a circular continuum. In the circular dataset, the datapoints \(90 ^\circ\) and \(270 ^\circ\) are both the same distance from \(0 ^\circ\). Finally, the values of \(0 ^\circ\) and \(360 ^\circ\) are identical. The resultant mean direction is `r round(mean_deg, 1)`\(^\circ\), which is equal to `r round(mean_deg %% 360, 1)`\(^\circ\).
 
 One peculiarity with the mean direction is that it can be undefined. For example, what is the mean direction of north and south: east or west? More on this in the third tutorial on distributional assumptions.
 
@@ -92,7 +92,7 @@ One peculiarity with the mean direction is that it can be undefined. For example
 The mean direction is a measure of location, just like the mean in linear data. Similarly, we can also obtain descriptives that are a measure of spread or concentration. These indicate how much variation there is in observations, similar to the variance in linear data.
 
 The mean resultant length (\(\rho\)) is one such measure, and is obtained by \(\overline{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \).
-This is a measure of *concentration* that can take on values between zero and one. One indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion but can also be caused by having two sets of observations on opposite ends on the circle. More on this in the third tutorial on distributional assumptions.
+This is a measure of *concentration* that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion but can also be caused by having two sets of observations on opposite ends on the circle. More on this in the third tutorial on distributional assumptions.
 
 The mean resultant length can be calculated using `rho.circular`. 
 
@@ -104,7 +104,7 @@ A mean resultant length of \(\rho \approx .248\) indicates a somewhat low concen
 
 Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. 
 
-Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data is simply the inverse of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\).
+Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\).
 
 ```{r}
 var(data.deg)
