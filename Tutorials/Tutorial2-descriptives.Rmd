@@ -36,6 +36,8 @@ plot(data.deg, main = "Observations in degrees")
 plot(data.rad, main = "Observations in radians")
 ```
 
+*The dataset in degrees and the dataset in radians plotted on the circle.*
+
 This shows that we must be very careful: the data entered in `as.circular` must match the units that are given.
 In fact, the way we entered our data in radians suggests that we first wanted to convert a set of data in degrees to radians and then work with them as radians. To do that, we could have done;
 
@@ -104,10 +106,13 @@ A mean resultant length of \(\rho \approx .248\) indicates a somewhat low concen
 
 Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. 
 
-Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\).
+Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\).
 
 ```{r}
 var(data.deg)
 sd(data.deg)
 ```
 
+
+## References
+Fisher, N. I. (1995). *Statistical analysis of circular data.* Cambridge University Press.
