@@ -3,8 +3,8 @@ title: "Tutorial 1 - An introduction to circular data"
 author: "Arjan Huizing"
 date: "2 April 2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
   word_document: default
 ---
 
@@ -95,3 +95,7 @@ So it then follows that \(\pi /2 ~ \text{rad} = 90^\circ\).
 
 Depending on the type of data we want to analyze, we use different methods. For example, if we want to predict a categorical outcome a binomial or multinomial logistic regression is prefered to using a normal linear regression. In the same vein, circular data should be analyzed using methods tailored to the unique attributes of such data. Analyzing circular data as either categorical or continuous data may lead to issues of validity, as even something as simple as a mean value can result in very different outcomes if analyzed as continous instead of circular, as we will see in tutorial 2.
 
+## References
+Herbon, A., Peter, C., Markert, L., Van Der Meer, E., & Voskamp, J. (2005). Emotion studies in HCI-a new approach. In *Proceedings of the 2005 HCI International Conference*.
+
+Warren, W. H., Rothman, D. B., Schnapp, B. H., & Ericson, J. D. (2017). Wormholes in virtual space: From cognitive maps to cognitive graphs. *Cognition, 166*, 152-163.
