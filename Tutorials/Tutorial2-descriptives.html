@@ -148,7 +148,7 @@ data.rad &lt;- as.circular(c(0, 90, 210, 270, 360), units = &quot;radians&quot;)
 </div>
 <div id="the-circular-mean" class="section level2">
 <h2>The circular mean</h2>
-<p>A mean value in circular data is referred to as the <em>mean direction</em>. For example, the mean direction in a dataset with observations on a compass pointing north (<span class="math inline">\(0 ^\circ\)</span>) and east (<span class="math inline">\(90 ^\circ\)</span>) would be northeast (<span class="math inline">\(45 ^\circ\)</span>). Although intuitively this makes sense, it often is not as straightforward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by <span class="math inline">\(n\)</span>. Imagine the same scenario as before but with the compass indicating <span class="math inline">\(359 ^\circ\)</span> instead of (<span class="math inline">\(0 ^\circ\)</span>). Where a linear mean would drastically shift, the mean direction will barely change.</p>
+<p>A mean value in circular data is referred to as the <em>mean direction</em> (<span class="math inline">\(\bar{\theta}\)</span>). For example, the mean direction in a dataset with observations on a compass pointing north (<span class="math inline">\(0 ^\circ\)</span>) and east (<span class="math inline">\(90 ^\circ\)</span>) would be northeast (<span class="math inline">\(45 ^\circ\)</span>). Although intuitively this makes sense, it often is not as straightforward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by <span class="math inline">\(n\)</span>. Imagine the same scenario as before but with the compass indicating <span class="math inline">\(359 ^\circ\)</span> instead of (<span class="math inline">\(0 ^\circ\)</span>). Where a linear mean would drastically shift, the mean direction will barely change.</p>
 <p>To obtain the mean direction then, requires us to use the sum of cosines (<span class="math inline">\(C = \sum \text{cos} \theta_i \)</span>), sum of sines (<span class="math inline">\(S = \sum \text{sin} \theta_i \)</span>) and <span class="math inline">\(R = \sqrt{C^2 + S^2} \)</span>, which is the square root of the sum of squared <span class="math inline">\(C\)</span> and <span class="math inline">\(S\)</span> values. The mean direction is then given by:</p>
 <span class="math display">\[\begin{align}
   \overline{\theta}  &amp;= 
@@ -179,20 +179,28 @@ mean(c(0, 90, 210, 270, 360))</code></pre>
 <div id="measures-of-concentration-and-spread" class="section level2">
 <h2>Measures of concentration and spread</h2>
 <p>The mean direction is a measure of location, just like the mean in linear data. Similarly, we can also obtain descriptives that are a measure of spread or concentration. These indicate how much variation there is in observations, similar to the variance in linear data.</p>
-<p>The mean resultant length (<span class="math inline">\(\rho\)</span>) is one such measure, and is obtained by <span class="math inline">\(\overline{R} = R/n\)</span>, where <span class="math inline">\(R = \sqrt{C^2 + S^2} \)</span>. This is a measure of <em>concentration</em> that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion but can also be caused by having two sets of observations on opposite ends on the circle. More on this in the third tutorial on distributional assumptions.</p>
+<p>The mean resultant length (<span class="math inline">\(\bar{R}\)</span>) is one such measure, and is obtained by <span class="math inline">\(\overline{R} = R/n\)</span>, where <span class="math inline">\(R = \sqrt{C^2 + S^2} \)</span>. This is a measure of <em>concentration</em> that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion but can also be caused by having two sets of observations on opposite ends on the circle. More on this in the third tutorial on distributional assumptions.</p>
 <p>The mean resultant length can be calculated using <code>rho.circular</code>.</p>
 <pre class="r"><code>rho.circular(data.deg)</code></pre>
 <pre><code>## [1] 0.2478627</code></pre>
-<p>A mean resultant length of <span class="math inline">\(\rho \approx .248\)</span> indicates a somewhat low concentration.</p>
+<p>A mean resultant length of <span class="math inline">\(\bar{R} \approx .248\)</span> indicates a somewhat low concentration.</p>
 <p>Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error.</p>
-<p>Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function <code>var.circular</code> will give you this value, but it is also easily obtained by <span class="math inline">\(1 - \rho\)</span>. The standard deviation is <em>not</em> obtained using the square root of the variance, but rather using <span class="math inline">\((-2 \log\ (1-var))^{1/2}\)</span>.</p>
+<p>Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data (<span class="math inline">\(V_m\)</span>) is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function <code>var.circular</code> will give you this value, but it is also easily obtained by <span class="math inline">\(1 - \rho\)</span>. The standard deviation (<span class="math inline">\(v\)</span>) is <em>not</em> obtained using the square root of the variance, but rather using <span class="math inline">\((-2 \log\ (1-var))^{1/2}\)</span>.</p>
 <pre class="r"><code>var(data.deg)</code></pre>
 <pre><code>## [1] 0.7521373</code></pre>
 <pre class="r"><code>sd(data.deg)</code></pre>
 <pre><code>## [1] 1.670258</code></pre>
+<p>As we can see the variance is indeed just <span class="math inline">\(\bar{R}\)</span> - 1. The standard deviation is 1.67. The circular package always returns this value in radians. Since our original dataset is in degrees, for easier interpretation we can choose to convert the value.</p>
+<pre class="r"><code>1.67*(180/pi)</code></pre>
+<pre><code>## [1] 95.68395</code></pre>
+<p>The standard deviation is approximately <span class="math inline">\(95.7^\circ\)</span>. One standard devation below the mean direction is <span class="math inline">\(240.5^\circ\)</span>, and one standard devation above the mean direction is <span class="math inline">\(71.9^\circ\)</span>.</p>
 </div>
-<div id="references" class="section level1">
-<h1>References</h1>
+<div id="conclusion" class="section level2">
+<h2>Conclusion</h2>
+<p>The mean direction (<span class="math inline">\(\bar{\theta}\)</span>), mean resultant length (<span class="math inline">\(\bar{R}\)</span>), variance (<span class="math inline">\(V_m\)</span>) and standard deviation (<span class="math inline">\(v\)</span>) are ways to describe location and spread in circular data. These measures are however not always reliable. For that reason, it is recommended one always plots their data and inspects it visually as well. In the next tutorial, we will discuss why these measures are not always reliable by going into the distributional assumptions. We will also cover how to plot circular data in R.</p>
+</div>
+<div id="references" class="section level2">
+<h2>References</h2>
 <p>Fisher, N. I. (1995). <em>Statistical analysis of circular data.</em> Cambridge University Press.</p>
 </div>
 

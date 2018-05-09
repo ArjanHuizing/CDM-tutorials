@@ -54,7 +54,7 @@ For the remainder of this tutorial, we will keep working with the dataset which 
 
 ## The circular mean
 
-A mean value in circular data is referred to as the *mean direction*. For example, the mean direction in a dataset with observations on a compass pointing north (\(0 ^\circ\)) and east (\(90 ^\circ\)) would be northeast (\(45 ^\circ\)). Although intuitively this makes sense, it often is not as straightforward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by $n$. Imagine the same scenario as before but with the compass indicating \(359 ^\circ\) instead of (\(0 ^\circ\)). Where a linear mean would drastically shift, the mean direction will barely change. 
+A mean value in circular data is referred to as the *mean direction* (\(\bar{\theta}\)). For example, the mean direction in a dataset with observations on a compass pointing north (\(0 ^\circ\)) and east (\(90 ^\circ\)) would be northeast (\(45 ^\circ\)). Although intuitively this makes sense, it often is not as straightforward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by $n$. Imagine the same scenario as before but with the compass indicating \(359 ^\circ\) instead of (\(0 ^\circ\)). Where a linear mean would drastically shift, the mean direction will barely change. 
 
 To obtain the mean direction then, requires us to use the sum of cosines (\(C = \sum \text{cos} \theta_i \)), sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is the square root of the sum of squared $C$ and $S$ values. The mean direction is then given by:
 
@@ -93,7 +93,7 @@ One peculiarity with the mean direction is that it can be undefined. For example
 
 The mean direction is a measure of location, just like the mean in linear data. Similarly, we can also obtain descriptives that are a measure of spread or concentration. These indicate how much variation there is in observations, similar to the variance in linear data.
 
-The mean resultant length (\(\rho\)) is one such measure, and is obtained by \(\overline{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \).
+The mean resultant length (\(\bar{R}\)) is one such measure, and is obtained by \(\overline{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \).
 This is a measure of *concentration* that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion but can also be caused by having two sets of observations on opposite ends on the circle. More on this in the third tutorial on distributional assumptions.
 
 The mean resultant length can be calculated using `rho.circular`. 
@@ -102,17 +102,28 @@ The mean resultant length can be calculated using `rho.circular`.
 rho.circular(data.deg)
 ```
 
-A mean resultant length of \(\rho \approx .248\) indicates a somewhat low concentration.
+A mean resultant length of \(\bar{R} \approx .248\) indicates a somewhat low concentration.
 
 Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. 
 
-Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\).
+Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data (\(V_m\)) is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \rho\). The standard deviation (\(v\)) is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\).
 
 ```{r}
 var(data.deg)
 sd(data.deg)
 ```
 
+As we can see the variance is indeed just $\bar{R}$ - 1. The standard deviation is 1.67. The circular package always returns this value in radians. Since our original dataset is in degrees, for easier interpretation we can choose to convert the value. 
+
+```{r}
+1.67*(180/pi)
+```
+The standard deviation is approximately \(95.7^\circ\). One standard devation below the mean direction is \(240.5^\circ\), and one standard devation above the mean direction is \(71.9^\circ\).
+
+
+## Conclusion
+
+The mean direction (\(\bar{\theta}\)), mean resultant length (\(\bar{R}\)), variance (\(V_m\)) and standard deviation (\(v\)) are ways to describe location and spread in circular data. These measures are however not always reliable. For that reason, it is recommended one always plots their data and inspects it visually as well. In the next tutorial, we will discuss why these measures are not always reliable by going into the distributional assumptions. We will also cover how to plot circular data in R.
 
 ## References
 Fisher, N. I. (1995). *Statistical analysis of circular data.* Cambridge University Press.
