@@ -2,17 +2,54 @@
 title: "Tutorial 3 - Circular probability distributions"
 author: "Arjan Huizing"
 date: "16 April 2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+library(circular)
 ```
 
-## Multiple approaches
+It is important to investigate the way that data is distributed. Not only do many models assume that data has a certain distribution, even simple descriptives such as the median or mean may paint a incorrect picture of our data if we take them at face value. For example, take the linear distributions depicted below. Both have similar means, but upon inspecting the distributions, the mean in our skewed dataset turns out to be a poor measure of location.
 
-#Wrapped distributions
+```{r echo=FALSE}
+par(mfrow=c(2,1))
+set.seed(123)
+norm <- rnorm(1000, mean = 2.5, sd = 1)
+norm[which(norm < 0)] <- 0
+hist(norm, breaks = 10, xlim = c(0,20), main = "A normally distributed dataset")
+abline(v=mean(norm), col="red")
 
-#Von Mises distribution
+gamma <- rgamma(1000, rate = 0.1, shape = 0.25)
+hist(gamma, breaks = 100, xlim = c(0,20), main = "A right skewed dataset")
+abline(v=mean(gamma), col="red")
+```
 
-#Embedding
+When we analyse circular data it is just as important that we visualize the distribution of data points.
+
+
+## Uniformity
+
+```{r echo=FALSE}
+par(mfrow=c(1,3))
+curve.circular(dcircularuniform, join=TRUE, xlim=c(-1.2, 1.2), 
+  ylim=c(-1.2, 1.2), main="Circular Uniform Distribution")
+
+ff <- function(x) dvonmises(x, mu=circular(pi), kappa=10)
+curve.circular(ff, join=TRUE, xlim=c(-2.3, 1),
+  main="VonMises Distribution \n mu=pi, kappa=10")
+
+ff <- function(x) dwrappednormal(x, mu=circular(pi), rho=0.8)
+curve.circular(ff, join=TRUE, xlim=c(-1.5, 1), 
+  main="Wrapped Normal Distribution \n mu=pi, rho=0.8")
+
+```
+
+
+```{r}
+#test for uniformity.
+#kuiper.test(data)
+```
+
