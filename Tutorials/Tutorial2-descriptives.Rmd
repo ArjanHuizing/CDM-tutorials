@@ -3,8 +3,8 @@ title: "Tutorial 2 - Circular descriptives"
 author: "Arjan Huizing"
 date: "16 April 2018"
 output:
-  pdf_document: default
   html_document: default
+  pdf_document: default
 ---
 
 ## Circular descriptives in R
@@ -86,7 +86,7 @@ mean_deg <- mean(data.deg)
 
 As we can see, the mean and the mean direction of values in degrees are very different. Where the regular mean simply takes the sum of all values and divides them by the amount of values, the mean direction takes account of the fact that the data is defined on a circular continuum. In the circular dataset, the datapoints \(90 ^\circ\) and \(270 ^\circ\) are both the same distance from \(0 ^\circ\). Finally, the values of \(0 ^\circ\) and \(360 ^\circ\) are identical. The resultant mean direction is `r round(mean_deg, 1)`\(^\circ\), which is equal to `r round(mean_deg %% 360, 1)`\(^\circ\).
 
-One peculiarity with the mean direction is that it can be undefined. For example, what is the mean direction of north and south: east or west? More on this in the third tutorial on distributional assumptions.
+One peculiarity with the mean direction is that it can be undefined. On rare occassions it is possible that all values are cancelled out by opposite values, resulting in an undefined mean direction. For example, what is the mean direction of north and south: east or west?
 
 
 ## Measures of concentration and spread
@@ -94,7 +94,7 @@ One peculiarity with the mean direction is that it can be undefined. For example
 The mean direction is a measure of location, just like the mean in linear data. Similarly, we can also obtain descriptives that are a measure of spread or concentration. These indicate how much variation there is in observations, similar to the variance in linear data.
 
 The mean resultant length (\(\bar{R}\)) is one such measure, and is obtained by \(\overline{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \).
-This is a measure of *concentration* that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion but can also be caused by having two sets of observations on opposite ends on the circle. More on this in the third tutorial on distributional assumptions.
+This is a measure of *concentration* that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread. Interestingly enough, zero itself does not necessarily mean complete dispersion but can also be caused by having two sets of observations on opposite ends on the circle. It is therefore wise to plot the distribution of circular data before drawing any conclusions about the concentration of datapoints. More on this in the third tutorial on distributional assumptions.
 
 The mean resultant length can be calculated using `rho.circular`. 
 
