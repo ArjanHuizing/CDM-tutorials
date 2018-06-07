@@ -3,6 +3,7 @@ title: "Tutorial 3 - Circular distributional assumptions"
 author: "Arjan Huizing"
 date: "16 April 2018"
 output:
+  word_document: default
   pdf_document: default
   html_document: default
 ---

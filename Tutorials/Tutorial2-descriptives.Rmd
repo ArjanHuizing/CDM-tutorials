@@ -9,11 +9,11 @@ output:
 
 ## Circular descriptives in R
 
-In the previous tutorial we discussed what circular data is and how it is measured. In this tutorial we will start analyzing circular data. For the analyses of circular data we will be using the open source programming language R. R is available for Windows, MacOS and popular Linux distributions, and can be downloaded from <https://cran.r-project.org/>. 
+In the previous tutorial we discussed what circular data is and how it is measured. In this tutorial we will start analyzing circular data. For the analyses of circular data we will be using the open source programming language R. R is available for Windows, MacOS and Linux, and can be downloaded from <https://cran.r-project.org/>. 
 
 &nbsp;
 
-To get started, install and load the package `circular` in R. This package contains functions for analyzing as well as plotting circular data.
+One tool that can be used to analyze circular data is the package `circular` in R. This package contains functions for analyzing as well as plotting circular data.
 ```{r message=FALSE, warning=FALSE}
 # install.packages("circular")
 library(circular)
