@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.3)  11 JUN 2018 10:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.3)  11 JUN 2018 11:07
 entering extended mode
-**./Tutorial1-introduction.tex
-(Tutorial1-introduction.tex
+**./Tutorial2-descriptives.tex
+(Tutorial2-descriptives.tex
 LaTeX2e <2017-04-15>
 Babel <3.18> and hyphenation patterns for 75 language(s) loaded.
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\article.cls"
@@ -801,7 +801,40 @@ Now handling font encoding PU ...
 ... no UTF-8 mapping file for font encoding PU
 )
 Package hyperref Info: Option `breaklinks' set `true' on input line 30.
+("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\color.sty"
+Package: color 2016/07/10 v1.1e Standard LaTeX Color (DPC)
 
+("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-cfg\color.
+cfg"
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package color Info: Driver file: pdftex.def on input line 147.
+
+("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdftex
+.def"
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyvrb\fancyvrb.s
+ty"
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz)
+\FV@CodeLineNo=\count114
+\FV@InFile=\read1
+\FV@TabBox=\box28
+\c@FancyVerbLine=\count115
+\FV@StepNumber=\count116
+\FV@OutFile=\write3
+) ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\framed\framed.sty
+"
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip48
+\fb@frw=\dimen125
+\fb@frh=\dimen126
+\FrameRule=\dimen127
+\FrameSep=\dimen128
+)
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.s
 ty"
 Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
@@ -817,13 +850,9 @@ cs.cfg"
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 99.
-
-("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics-def\pdftex
-.def"
-File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
-))
-\Gin@req@height=\dimen125
-\Gin@req@width=\dimen126
+)
+\Gin@req@height=\dimen129
+\Gin@req@width=\dimen130
 )
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\grffile.st
 y"
@@ -838,39 +867,40 @@ Package: parskip 2001/04/09 non-zero parskip adjustments
 ) ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\titling\titling.s
 ty"
 Package: titling 2009/09/04 v2.1d maketitle typesetting
-\thanksmarkwidth=\skip48
-\thanksmargin=\skip49
-\droptitle=\skip50
-) (Tutorial1-introduction.aux)
-\openout1 = `Tutorial1-introduction.aux'.
+\thanksmarkwidth=\skip49
+\thanksmargin=\skip50
+\droptitle=\skip51
+) (Tutorial2-descriptives.aux)
+\openout1 = `Tutorial2-descriptives.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 86.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 86.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 126.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 126.
+
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ts1cmr.fd"
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 86.
-LaTeX Font Info:    ... okay on input line 86.
-LaTeX Font Info:    Try loading font information for T1+lmr on input line 86.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 126.
+LaTeX Font Info:    ... okay on input line 126.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 126.
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmr.fd"
 File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 86.
+LaTeX Info: Redefining \microtypecontext on input line 126.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -920,8 +950,8 @@ File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\AtBeginShipoutBox=\box28
-Package hyperref Info: Link coloring OFF on input line 86.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring OFF on input line 126.
 
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyperref\nameref.st
 y"
@@ -931,29 +961,29 @@ Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 string.sty"
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count114
+\c@section@level=\count117
 )
-LaTeX Info: Redefining \ref on input line 86.
-LaTeX Info: Redefining \pageref on input line 86.
-LaTeX Info: Redefining \nameref on input line 86.
-(Tutorial1-introduction.out) (Tutorial1-introduction.out)
-\@outlinefile=\write3
-\openout3 = `Tutorial1-introduction.out'.
+LaTeX Info: Redefining \ref on input line 126.
+LaTeX Info: Redefining \pageref on input line 126.
+LaTeX Info: Redefining \nameref on input line 126.
+(Tutorial2-descriptives.out) (Tutorial2-descriptives.out)
+\@outlinefile=\write4
+\openout4 = `Tutorial2-descriptives.out'.
 
 
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mki
 i"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count115
-\scratchdimen=\dimen127
-\scratchbox=\box29
-\nofMPsegments=\count116
-\nofMParguments=\count117
+\scratchcounter=\count118
+\scratchdimen=\dimen131
+\scratchbox=\box30
+\nofMPsegments=\count119
+\nofMParguments=\count120
 \everyMPshowfont=\toks25
-\MPscratchCnt=\count118
-\MPscratchDim=\dimen128
-\MPnumerator=\count119
-\makeMPintoPDFobject=\count120
+\MPscratchCnt=\count121
+\MPscratchDim=\dimen132
+\MPnumerator=\count122
+\makeMPintoPDFobject=\count123
 \everyMPtoPDFconversion=\toks26
 )
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\oberdiek\epstopdf-b
@@ -970,67 +1000,33 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
-<C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/circular-data-examples.jpg
-, id=23, 709.14937pt x 218.31563pt>
-File: C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/circular-data-example
-s.jpg Graphic file (type jpg)
-<use C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/circular-data-examples
-.jpg>
-Package pdftex.def Info: C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/ci
-rcular-data-examples.jpg  used on input line 114.
-(pdftex.def)             Requested size: 501.8873pt x 154.5088pt.
-
-Overfull \hbox (32.13228pt too wide) in paragraph at lines 114--114
- [] 
- []
-
-<C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/mazes-warren.jpg, id=24, 1
-70.95447pt x 93.6129pt>
-File: C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/mazes-warren.jpg Grap
-hic file (type jpg)
-<use C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/mazes-warren.jpg>
-Package pdftex.def Info: C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/ma
-zes-warren.jpg  used on input line 139.
-(pdftex.def)             Requested size: 170.95924pt x 93.61551pt.
-[1
-
-{C:/Users/Icky/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map} <C:/Users/Ick
-y/Documents/GitHub/CDM-tutorials/Images/circular-data-examples.jpg>]
-<Tutorial1-introduction_files/figure-latex/unnamed-chunk-3-1.pdf, id=35, 469.75
-5pt x 325.215pt>
-File: Tutorial1-introduction_files/figure-latex/unnamed-chunk-3-1.pdf Graphic f
-ile (type pdf)
-<use Tutorial1-introduction_files/figure-latex/unnamed-chunk-3-1.pdf>
-Package pdftex.def Info: Tutorial1-introduction_files/figure-latex/unnamed-chun
-k-3-1.pdf  used on input line 153.
-(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 161.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 135.
 
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\ot1lmr.fd"
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 161.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 135.
 
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omllmm.fd"
 File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 161
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 135
 .
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omslmsy.fd"
 File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 161
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 135
 .
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\omxlmex.fd"
 File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10> on input line 161.
+(Font)              <10> on input line 135.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <7> on input line 161.
+(Font)              <7> on input line 135.
 LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <5> on input line 161.
-LaTeX Font Info:    Try loading font information for U+msa on input line 161.
+(Font)              <5> on input line 135.
+LaTeX Font Info:    Try loading font information for U+msa on input line 135.
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
@@ -1038,50 +1034,79 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 g"
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 161.
+LaTeX Font Info:    Try loading font information for U+msb on input line 135.
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 ("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\microtype\mt-msb.cf
 g"
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
-) [2 <C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/mazes-warren.jpg> <./
-Tutorial1-introduction_files/figure-latex/unnamed-chunk-3-1.pdf>]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 191.
-[3]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 191.
-(Tutorial1-introduction.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 191.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 191.
-Package rerunfilecheck Info: File `Tutorial1-introduction.out' has not changed.
+)
+LaTeX Font Info:    Try loading font information for T1+lmtt on input line 140.
 
-(rerunfilecheck)             Checksum: 902551508F45F19BCA0FAAC8A7C36C21;488.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 191.
+("C:\Users\Icky\AppData\Local\Programs\MiKTeX 2.9\tex\latex\lm\t1lmtt.fd"
+File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `T1/lmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/lmtt/b/n' tried instead on input line 145.
+<Tutorial2-descriptives_files/figure-latex/unnamed-chunk-3-1.pdf, id=24, 469.75
+5pt x 325.215pt>
+File: Tutorial2-descriptives_files/figure-latex/unnamed-chunk-3-1.pdf Graphic f
+ile (type pdf)
+<use Tutorial2-descriptives_files/figure-latex/unnamed-chunk-3-1.pdf>
+Package pdftex.def Info: Tutorial2-descriptives_files/figure-latex/unnamed-chun
+k-3-1.pdf  used on input line 167.
+(pdftex.def)             Requested size: 469.75386pt x 325.2142pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 167--170
+[][]
+ []
+
+[1
+
+{C:/Users/Icky/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}] [2 <./Tutori
+al2-descriptives_files/figure-latex/unnamed-chunk-3-1.pdf>] [3]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 353.
+[4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 353.
+(Tutorial2-descriptives.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 353.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 353.
+Package rerunfilecheck Info: File `Tutorial2-descriptives.out' has not changed.
+
+(rerunfilecheck)             Checksum: 6234AFCD9EBED9427B00016C7FE836FA;722.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 353.
  ) 
 Here is how much of TeX's memory you used:
- 12260 strings out of 493305
- 180893 string characters out of 3130238
- 275560 words of memory out of 3000000
- 15597 multiletter control sequences out of 15000+200000
- 39426 words of font info for 61 fonts, out of 3000000 for 9000
+ 12822 strings out of 493305
+ 189075 string characters out of 3130238
+ 289355 words of memory out of 3000000
+ 16119 multiletter control sequences out of 15000+200000
+ 46830 words of font info for 74 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 32i,4n,38p,249b,392s stack positions out of 5000i,500n,10000p,200000b,50000s
-{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathsy
-.enc}{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mat
-hit.enc}{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-
-rm.enc}{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-e
-c.enc}<C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm/lm
-bx12.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
-/lmmi10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
-/lm/lmr10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/publ
-ic/lm/lmr17.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
-blic/lm/lmri10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
-/public/lm/lmri12.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
-pe1/public/lm/lmsy10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts
-/type1/public/lm/lmsy7.pfb>
-Output written on Tutorial1-introduction.pdf (3 pages, 477913 bytes).
+ 32i,14n,38p,348b,357s stack positions out of 5000i,500n,10000p,200000b,50000s
+{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-rm.enc
+}{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-mathit.
+enc}{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-math
+ex.enc}{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/lm-m
+athsy.enc}{C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/enc/dvips/lm/l
+m-ec.enc}<C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
+/lmbx12.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public
+/lm/lmex10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pub
+lic/lm/lmmi10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/
+public/lm/lmmi7.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type
+1/public/lm/lmr10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/ty
+pe1/public/lm/lmr17.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/
+type1/public/lm/lmr7.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts
+/type1/public/lm/lmri10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fo
+nts/type1/public/lm/lmri12.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9
+/fonts/type1/public/lm/lmsy10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/lm/lmsy7.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTe
+X 2.9/fonts/type1/public/lm/lmtk10.pfb><C:/Users/Icky/AppData/Local/Programs/Mi
+KTeX 2.9/fonts/type1/public/lm/lmtt10.pfb>
+Output written on Tutorial2-descriptives.pdf (4 pages, 242262 bytes).
 PDF statistics:
- 89 PDF objects out of 1000 (max. 8388607)
- 9 named destinations out of 1000 (max. 500000)
- 10296 words of extra memory for PDF output out of 12000 (max. 10000000)
+ 115 PDF objects out of 1000 (max. 8388607)
+ 11 named destinations out of 1000 (max. 500000)
+ 10286 words of extra memory for PDF output out of 12000 (max. 10000000)
 

@@ -1,62 +1,54 @@
 ---
 title: "Tutorial 2 - Circular descriptives"
 author: "Arjan Huizing"
-date: "16 April 2018"
 output:
   html_document: default
   pdf_document: default
 ---
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(circular)
+```
 
-## Circular descriptives in R
+## Getting started in R
 
 In the previous tutorial we discussed what circular data is and how it is measured. In this tutorial we will start analyzing circular data. For the analyses of circular data we will be using the open source programming language R. R is available for Windows, MacOS and Linux, and can be downloaded from <https://cran.r-project.org/>. 
 
 &nbsp;
 
-One tool that can be used to analyze circular data is the package `circular` in R. This package contains functions for analyzing as well as plotting circular data.
-```{r message=FALSE, warning=FALSE}
-# install.packages("circular")
+One tool that can be used to analyze and plot circular data is the package `circular` in R. To install and load this package the following code can be used
+```{r message=FALSE, warning=FALSE, eval=FALSE}
+install.packages("circular")
 library(circular)
 ```
 
-For circular data there are two units of measurement that are commonly used, degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\)) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (e.g. 361 degrees equals 1 degree). To see this in action, we specify two small datasets, one in degrees and the other in radians. For this, we use the function `as.circular` and specify the measurement type with the argument units.
-
-```{r message=FALSE, warning=FALSE}
-data.deg <- as.circular(c(0, 90, 210, 270, 360), units = "degrees")
-data.rad <- as.circular(c(0, 90, 210, 270, 360), units = "radians")
+For circular data there are two units of measurement that are commonly used, degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\)) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (e.g. 361 degrees equals 1 degree). To showcase this, we specify one datasets containing the observations \([0,2,4,6,8]\). We can enter this data into R using the function `as.circular`. The argument `units` can be used to specify the measurement type in either degrees or radians.
+```{r echo=TRUE, message=FALSE, warning=FALSE}
+data.deg <- as.circular(c(0, 2, 4, 6, 8), units = "degrees")
+data.rad <- as.circular(c(0, 2, 4, 6, 8), units = "radians")
 ```
-
-In our dataset with values in radians, all values except for 0 exceed 6.28. Thus when calculating the mean direction, all these values are rescaled. Instead of specifying the values of 0, 90, 210, 270 and 360, we specified the values 0, `r 90%%(2*pi)`, `r 210%%(2*pi)`, `r 270%%(2*pi)` and `r 360%%(2*pi)` radians. Remainders can be calculated in R using `%%`, the modulo operator, e.g. 90`%%`\(2\pi\) = `r 90%%(2*pi)`.
-
-&nbsp;
 
 ```{r echo=FALSE}
 par(mfrow = c(1,2))
 plot(data.deg, main = "Observations in degrees")
 plot(data.rad, main = "Observations in radians")
 ```
-
 *The dataset in degrees and the dataset in radians plotted on the circle.*
 
-This shows that we must be very careful: the data entered in `as.circular` must match the units that are given.
-In fact, the way we entered our data in radians suggests that we first wanted to convert a set of data in degrees to radians and then work with them as radians. To do that, we could have done;
+If the data is measured in degrees the observations will be concentrated on one side of the circle, as the circular range extends from zero to 360. If the data is measured in radians however, the data will be spread across the entire circular range of \(2\pi\). The value of 8 will exceed this maximum and is thus calculated as `r round(8%%(2*pi), digits = 2)`.
 
-```{r, eval = FALSE}
-data.rad <- as.circular(c(0, 90, 210, 270, 360) * pi / 180, units = "radians")
-```
-or even just
+Visually we can see these two datasets are completely different. This shows that we must be very careful: the data entered in `as.circular` must match the units that are given. In R we can always convert our values from radians to degrees and vice versa using the function `conversion.circular`. 
+
 ```{r, eval = FALSE}
 data.rad <- conversion.circular(data.deg, units = "radians")
 ```
 
-For the remainder of this tutorial, we will keep working with the dataset which interprets the values 0, 90, 210, 270 and 360 as degrees. 
 
+## The mean direction
 
-## The circular mean
+A mean value in circular data is referred to as the *mean direction*. For example, the mean direction in a dataset with observations on a compass pointing north (\(0 ^\circ\)) and east (\(90 ^\circ\)) would be northeast (\(45 ^\circ\)). Although intuitively this makes sense, it often is not as straightforward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by the total number of observations. If one would have a dataset with an observation of \(350 ^\circ\) and \(10 ^\circ\) then the mean direction on the circle will be drastically different from the linear mean.
 
-A mean value in circular data is referred to as the *mean direction* (\(\bar{\theta}\)). For example, the mean direction in a dataset with observations on a compass pointing north (\(0 ^\circ\)) and east (\(90 ^\circ\)) would be northeast (\(45 ^\circ\)). Although intuitively this makes sense, it often is not as straightforward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by $n$. Imagine the same scenario as before but with the compass indicating \(359 ^\circ\) instead of (\(0 ^\circ\)). Where a linear mean would drastically shift, the mean direction will barely change. 
-
-To obtain the mean direction then, requires us to use the sum of cosines (\(C = \sum \text{cos} \theta_i \)), sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is the square root of the sum of squared $C$ and $S$ values. The mean direction is then given by:
+Given a dataset with a total number of \(n\) obersvations \(\theta\), the mean direction of \(\theta\) values requires us to calculate the sum of cosines (\(C = \sum \text{cos} \theta_i \)), the sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is the square root of the sum of squared $C$ and $S$ values. The mean direction is then given by Fisher (1995):
 
 \begin{align}
   \overline{\theta}  &= 
@@ -65,26 +57,20 @@ To obtain the mean direction then, requires us to use the sum of cosines (\(C = 
       tan^{-1} (S/C) + \pi             &  C < 0\\ 
       tan^{-1} (S/C) + 2\pi            &  S < 0, C > 0\\ 
     \end{cases}
-    \text{, (Fisher, 1995)}
 \end{align}
 \
 
-The mean direction can easily be calculated in R. The package `circular` contains the function `mean.circular`, which integrates with the base R function for calculating the mean.
-
-```{r}
-#Obtaining the linear mean of the values we have specified. 
-mean(c(0, 90, 210, 270, 360))
-```
+The mean direction can easily be computed in R. The package `circular` contains the function `mean.circular`, which integrates with the base R function for calculating the mean.
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
-mean(data.deg)
+mean(data.rad)
 ```
 
 ```{r, include=FALSE}
-mean_deg <- mean(data.deg)
+mean_rad <- mean(data.rad)
 ```
 
-As we can see, the mean and the mean direction of values in degrees are very different. Where the regular mean simply takes the sum of all values and divides them by the amount of values, the mean direction takes account of the fact that the data is defined on a circular continuum. In the circular dataset, the datapoints \(90 ^\circ\) and \(270 ^\circ\) are both the same distance from \(0 ^\circ\). Finally, the values of \(0 ^\circ\) and \(360 ^\circ\) are identical. The resultant mean direction is `r round(mean_deg, 1)`\(^\circ\), which is equal to `r round(mean_deg %% 360, 1)`\(^\circ\).
+As we can see, the mean direction of values in radians are very different from the linear mean of \([0,2,4,6,8]\). Where the regular mean simply takes the sum of all values and divides them by the total amount of values, the mean direction takes account of the fact that the data is defined on a circular continuum. 
 
 One peculiarity with the mean direction is that it can be undefined. On rare occassions it is possible that all values are cancelled out by opposite values, resulting in an undefined mean direction. For example, what is the mean direction of north and south: east or west?
 

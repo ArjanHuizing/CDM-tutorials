@@ -1,7 +1,6 @@
 ---
 title: "Tutorial 1 - What is circular data?"
 author: "Arjan Huizing"
-date: "2 April 2018"
 output:
   pdf_document: default
   html_document: default
