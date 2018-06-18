@@ -49,7 +49,7 @@ plot(rcircularuniform(100, control.circular=list(units="degrees")), stack = T,
      main = "Uniformly distributed data")
 ```
 
-Both circular models as well as simple descriptives make assumptions about the distribution of data points on the circle. It is thus always a good idea to plot the dataset before any analysis takes place.
+Both circular models as well as simple descriptives make assumptions about the distribution of data points on the circle. It is thus always a good idea to plot the dataset before any analysis takes place. Additionally, uniformity of circular data can sometimes be hard to judge just by eye. Data points can be scattered across the circle but still have one or more modal groups. For this reason, it is common practice to test uniformity with a statistical test. A future tutorial will cover some of the possible ways to test uniformity.
 
 
 ##Plotting circular data in R
@@ -77,14 +77,6 @@ hist(as.numeric(data),
      main = "Pigeon flight directions")
 ```
 
-## Uniformity
+## Conclusion
 
-Uniformally distributed data indicates an even spread of observations across the entire circular range. This can sometimes be difficult to observe visually, which is why it is recommended to also assess uniformity using uniformity plots and statistical tests.
-
-```{r}
-#test for uniformity.
-
-#uniformity plot
-#kuiper.test(data)
-#rao.test(data)
-```
+The way that data is distributed on the circle is important to investigate. Under certain distributions descriptives may be inaccurate. Many circular models also make assumptions about the distribution of data that need to be met. In future tutorials we will cover how to deal with data that is distributed in a potentially problematic way. 
