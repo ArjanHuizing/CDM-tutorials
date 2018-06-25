@@ -77,7 +77,7 @@ As we can see, the mean direction of values in radians are very different from t
 
 The mean direction is a measure of location, just like the mean in linear data. Similarly, we can also obtain descriptives that are a measure of spread or concentration. These indicate how much variation there is in observations, similar to the variance in linear data.
 
-The mean resultant length (\(\bar{R}\)) is one such measure, and is obtained by \(\overline{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \).
+The mean resultant length (\(\bar{R}\)) is one such measure, and is obtained by \(\bar{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \).
 This is a measure of *concentration* that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread in observed values. 
 
 The mean resultant length can be calculated using the function `rho.circular`. 

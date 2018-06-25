@@ -168,7 +168,7 @@ The mean direction can easily be computed in R. The package <code>circular</code
 <div id="measures-of-concentration-and-spread" class="section level2">
 <h2>Measures of concentration and spread</h2>
 <p>The mean direction is a measure of location, just like the mean in linear data. Similarly, we can also obtain descriptives that are a measure of spread or concentration. These indicate how much variation there is in observations, similar to the variance in linear data.</p>
-<p>The mean resultant length (<span class="math inline">\(\bar{R}\)</span>) is one such measure, and is obtained by <span class="math inline">\(\overline{R} = R/n\)</span>, where <span class="math inline">\(R = \sqrt{C^2 + S^2} \)</span>. This is a measure of <em>concentration</em> that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread in observed values.</p>
+<p>The mean resultant length (<span class="math inline">\(\bar{R}\)</span>) is one such measure, and is obtained by <span class="math inline">\(\bar{R} = R/n\)</span>, where <span class="math inline">\(R = \sqrt{C^2 + S^2} \)</span>. This is a measure of <em>concentration</em> that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread in observed values.</p>
 <p>The mean resultant length can be calculated using the function <code>rho.circular</code>.</p>
 <pre class="r"><code>rho.circular(data.rad)</code></pre>
 <pre><code>## [1] 0.2279162</code></pre>

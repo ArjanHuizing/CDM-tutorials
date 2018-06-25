@@ -31,11 +31,11 @@ The mean direction returns `NA` indicating it is not defined. Additionally, the 
 plot(example, main = "Dataset with two exact opposite modal groups")
 ```
 
-In this example, exact opposites were used. Similar problems also arise when data is distributed in two largely opposite groups. We will still find a mean resultant length close to zero even though the data is not evenly spread across the circle. We will obtain a mean direction, however the mean direction is not indicative for the actual location of the data and may also drastically shift due to small changes in observed values.
+In this example, exact opposites were used. Similar problems also arise when data is distributed in two largely opposite groups. We will find a mean resultant length close to zero even though the data is not evenly spread across the circle. The mean direction is thus not indicative for the actual location of the data and may also drastically shift due to small changes in observed values.
 
 ##Distributions on the circle
 
-Generally speaking there are three types of circular distributions: unimodal, multimodal and uniformly distributed data. Unimodally distributed data is data that contains a single area on the circle in which most of the observations are found. Many statistical tests assume unimodally distributed data. It is however also possible to find multimodal data. This is data in which more than one modal groups are present in the dataset. This may pose a problem if these modal groups all belong to the same set of observations. Uniformly distributed data is a second problematic distribution. In this distribution, observations are spread out entirely over the circular range.
+Generally speaking there are three types of circular distributions: unimodal, multimodal and uniformly distributed data. Unimodally distributed data is data that contains a single area on the circle in which most of the observations are found. Many statistical tests assume unimodally distributed data. It is however also possible to find multimodal data. This is data in which more than one modal group is present in the dataset. This may pose a problem if these modal groups all belong to the same set of observations. Uniformly distributed data is also problematic. In a uniform distribution, observations are spread out entirely over the entire circular range.
 
 ```{r echo=FALSE}
 par(mfrow = c(1,3))
@@ -68,7 +68,7 @@ plot(x = data,
      main = "Pigeon flight directions")
 ```
 
-It can sometimes also be useful to inspect circular data on a continues scale. This can be done by transforming the data from circular to continues using `as.numeric`. Keep in mind that values that are outside of the circular range will need to be calculated down to their remainder using `%%`. Be mindful that a unimodal dataset is not mistaken for a bimodal dataset. In such a scenario one can choose to rescale values.
+It can sometimes also be useful to inspect circular data on a continous scale. This can be done by transforming the data from circular to continues using `as.numeric`. Keep in mind that values that are outside of the circular range will need to be calculated down to their remainder using `%%`. Be mindful that a unimodal dataset is not mistaken for a bimodal dataset. In such a scenario one can choose to rescale values.
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 hist(as.numeric(data),
