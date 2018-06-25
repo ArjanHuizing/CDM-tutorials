@@ -70,7 +70,7 @@ plot(x = data,
      main = "Pigeon flight directions", shrink = .9)
 ```
 
-It can sometimes also be useful to inspect circular data on a continous scale. This can be done by transforming the data from circular to continues using `as.numeric`. Keep in mind that values that are outside of the circular range will need to be calculated down to their remainder using `%%`. Be mindful that a unimodal dataset is not mistaken for a bimodal dataset. In such a scenario one can choose to rescale values.
+It can sometimes also be useful to inspect circular data on a continous scale. This can be done by transforming the data from circular to continuous using `as.numeric`. Keep in mind that values that are outside of the circular range will need to be calculated down to their remainder using `%%`. Be mindful that a unimodal dataset is not mistaken for a bimodal dataset. In such a scenario one can choose to rescale values.
 
 ```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 hist(as.numeric(data),
