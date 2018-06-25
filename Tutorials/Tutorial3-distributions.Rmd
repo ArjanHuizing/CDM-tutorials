@@ -2,9 +2,9 @@
 title: "Tutorial 3 - Plots and distributions"
 author: "Arjan Huizing"
 output:
-  pdf_document: default
-  word_document: default
   html_document: default
+  word_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -58,7 +58,7 @@ Both circular models as well as simple descriptives make assumptions about the d
 
 The `circular` package contains the function `plot.circular` for this purpose. An example of this is given below, using a dataset on flight direction of pigeons. Note how the argument `stack = T` is passed onto the function. The default value for this is `FALSE`, which would result in similar values overlapping. A second useful argument is `sep`, which can be used to specify the amount of seperation between stacked data points. The command `cex` can be used to specify the desired size of the datapoints themselves. The zero point and rotation can also be changed using the arguments `zero` and `rotation`. `zero` requires a value in radians and `rotation` requires the string $"clock"$ or $"counter"$. The example below uses a dataset on pigeon flight directions to demonstrate these arguments.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
+```{r message=FALSE, warning=FALSE, paged.print=FALSE}
 data <- as.circular(pigeons$bearing, units = "degrees")
 
 plot(x = data, 
