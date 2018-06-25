@@ -8,13 +8,13 @@ output:
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
 library(circular)
 ```
 
 ##Introduction
 
-It is important to investigate the way that data is distributed. Not only do many models assume that data has a certain distribution, even simple descriptives such as the median or mean may paint a incorrect picture of our data if we take them at face value. 
+It is important to investigate the way that data is distributed. Not only do many models assume that data has a certain distribution, even simple descriptives such as the median or mean may paint an incorrect picture of our data if we take them at face value. 
 
 When we analyse circular data it is just as important that we visualize the distribution of data points. In the previous tutorial we noted it was possible for mean directions to be undefined and for mean resultant lengths to indicate a very low concentration even when in our data this may not be the case. For example, take the dataset specified below. 
 
@@ -35,7 +35,9 @@ In this example, exact opposites were used. Similar problems also arise when dat
 
 ##Distributions on the circle
 
-Generally speaking there are three types of circular distributions: unimodal, multimodal and uniformly distributed data. Unimodally distributed data is data that contains a single area on the circle in which most of the observations are found. Many statistical tests assume unimodally distributed data. It is however also possible to find multimodal data. This is data in which more than one modal group is present in the dataset. This may pose a problem if these modal groups all belong to the same set of observations. Uniformly distributed data is also problematic. In a uniform distribution, observations are spread out entirely over the entire circular range.
+Generally speaking there are three types of circular distributions: unimodal, multimodal and uniformly distributed data. 
+
+Unimodally distributed data is data that contains a single area on the circle in which most of the observations are found. Many statistical tests assume unimodally distributed data. It is however also possible to find multimodal data. This is data in which more than one modal group is present in the dataset. This may pose a problem if these modal groups all belong to the same set of observations. Uniformly distributed data is also problematic. In a uniform distribution, observations are spread out entirely over the entire circular range.
 
 ```{r echo=FALSE}
 par(mfrow = c(1,3))
