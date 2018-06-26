@@ -1,6 +1,5 @@
 ---
 title: "Tutorial 1 - What is circular data?"
-author: "Arjan Huizing"
 output:
   pdf_document: default
   html_document: default
@@ -19,7 +18,7 @@ library(knitr)
 
 Most researchers will be familiar with the concept of measurement levels of variables. The most popular two being continuous data and categorical data. Circular data is another type of measurement with properties that distinguish it from other data types. The main property of circular data is the fact that it is periodical. What this means is that there is no true start or end point, but rather a continuous scale that loops back on itself. 
 
-An example would be the time of day as represented on the clock. As time passes the hands on the face of a clock will inevitably be bound to pass the same 12 hours over and over. This also means that distances can not be interpreted as linear. The difference in time between 1 o'clock and 3 o'clock is the same as the distance between 23 o'clock and 1 o'clock, that is, two hours. Another quality of circular data is that every value can be seen to have an opposite value. A second instrument that provided circular measurements is the compass. When we look at directions on a compass, we would say that north is the opposite of south, and east is the opposite of west. Circumplex models also use this quality to create a continuum of related values, where opposite values are 180 degrees apart. Examples of this from social and behavioural science are Schwartz' theory of basic values, Russel's mood scale and Leary's interpersonal circumplex.
+An example would be the time of day as represented on the clock. As time passes the hands on the face of a clock will inevitably be bound to pass the same 24 hours over and over. This also means that distances can not be interpreted as linear. The difference in time between 1 o'clock and 3 o'clock is the same as the distance between 23 o'clock and 1 o'clock, that is, two hours. Another quality of circular data is that every value can be seen to have an opposite value. A second instrument that provides circular measurements is the compass. When we look at directions on a compass, we would say that north is the opposite of south, and east is the opposite of west. Circumplex models also use this quality to create a continuum of related values, where opposite values are 180 degrees apart. Examples of this from social and behavioural science are Schwartz' theory of basic values, Russel's mood scale and Leary's interpersonal circumplex.
 
 
 ```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, out.width = '500px',fig.align="center"}
@@ -63,9 +62,9 @@ Note how the output above indicates the values in degrees. Measuring circular da
 
 Values in degrees are easily converted to radians and vice versa. The formulae for this are 
 
-\(degrees^\circ*( \pi /180) = radians\)
+\(degrees*( \pi /180) = radians\)
 
-\(radians (180/ \pi) = degrees\)
+\(radians* (180/ \pi) = degrees\)
 
 
 

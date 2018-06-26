@@ -1,6 +1,5 @@
 ---
 title: "Tutorial 3 - Plots and distributions"
-author: "Arjan Huizing"
 output:
   html_document: default
   word_document: default

@@ -1,6 +1,5 @@
 ---
 title: "Tutorial 2 - Circular descriptives"
-author: "Arjan Huizing"
 output:
   pdf_document: default
   html_document: default
@@ -49,7 +48,7 @@ data.rad <- conversion.circular(data.deg, units = "radians")
 
 A mean value in circular data is referred to as the *mean direction*. For example, the mean direction in a dataset with observations on a compass pointing north (\(0 ^\circ\)) and east (\(90 ^\circ\)) would be northeast (\(45 ^\circ\)). Although intuitively this makes sense, it often is not as straightforward to calculate as the mean in linear data. Unlike in linear data, it is not possible to take the sum of all values and divide them by the total number of observations. If one would have a dataset with an observation of \(350 ^\circ\) and \(10 ^\circ\) then the mean direction on the circle will be drastically different from the linear mean.
 
-Given a dataset with a total number of \(n\) obersvations \(\theta\), the mean direction of \(\theta\) values requires us to calculate the sum of cosines (\(C = \sum \text{cos} \theta_i \)), the sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is the square root of the sum of squared $C$ and $S$ values. The mean direction is then given by Fisher (1995):
+Given a dataset with a total number of \(n\) observations \(\theta\), the mean direction of \(\theta\) values requires us to calculate the sum of cosines (\(C = \sum \text{cos} \theta_i \)), the sum of sines (\(S = \sum \text{sin} \theta_i \)) and \(R = \sqrt{C^2 + S^2} \), which is called the resultant length. The mean direction is then given by:
 
 \begin{align}
   \overline{\theta}  &= 
@@ -58,6 +57,7 @@ Given a dataset with a total number of \(n\) obersvations \(\theta\), the mean d
       tan^{-1} (S/C) + \pi             &  C < 0\\ 
       tan^{-1} (S/C) + 2\pi            &  S < 0, C > 0\\ 
     \end{cases}
+    \text{.}
 \end{align}
 \
 
@@ -77,7 +77,7 @@ As we can see, the mean direction of values in radians are very different from t
 
 The mean direction is a measure of location, just like the mean in linear data. Similarly, we can also obtain descriptives that are a measure of spread or concentration. These indicate how much variation there is in observations, similar to the variance in linear data.
 
-The mean resultant length (\(\bar{R}\)) is one such measure, and is obtained by \(\bar{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \).
+The mean resultant length (\(\bar{R}\)) is one such measure, and is obtained by \(\bar{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \) and \(n\) is the number of observations.
 This is a measure of *concentration* that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread in observed values. 
 
 The mean resultant length can be calculated using the function `rho.circular`. 
@@ -88,18 +88,16 @@ rho.circular(data.rad)
 
 A mean resultant length of \(\bar{R} \approx .228\) indicates a somewhat low concentration.
 
-Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard error. 
+Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard deviation. 
 
-Since the mean resultant length is a measure of concentration and the variance is traditionally a measure of spread, the variance in circular data (\(V_m\)) is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \bar{R}\). 
+Since the mean resultant length is a measure of concentration and the variance is a measure of spread, the variance in circular data (\(V_m\)) is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \bar{R}\). 
 
 ```{r}
 var(data.rad)
 ```
 
 
-As we can see the variance is indeed just \(\bar{R} - 1\).
-
-The standard deviation (\(v\)) is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\). The function `sd.circular` is used to obtain this value.
+The standard deviation (\(v\)) is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\). The function `sd.circular` in R provides this value.
 
 ```{r}
 sd(data.rad)
@@ -115,11 +113,11 @@ The standard deviation in our dataset is approximately 1.72 radians or 98.5 degr
 
 &nbsp;
 
-When working with circular data one perculiar situation can arise in which both the mean direction and the mean resultant length are unreliable or even undefined. When data is distributed on the circle in such a manner that there are two opposite poles, the mean direction will be largely meaningless. Furthermore, the mean resultant length will be close to zero, indicating complete dispersion of datapoints where in practice this is not the case. On rare occassions it is possible that all values are cancelled out by opposite values, resulting in an undefined mean direction. For example, what is the mean direction of north and south: east or west? In such a situation the mean resultant length will equal zero. It is therefore always recommended to plot the distribution of circular data before drawing any conclusions about the concentration or location of datapoints. 
+When working with circular data one perculiar situation can arise in which both the mean direction and the mean resultant length are unreliable or even undefined. When data is distributed on the circle in such a manner that there are two opposite modes, the mean direction will be largely meaningless. Furthermore, the mean resultant length will be close to zero, indicating complete dispersion of datapoints where in practice this is not the case. On rare occassions it is possible that all values are cancelled out by opposite values, resulting in an undefined mean direction. For example, what is the mean direction of north and south: east or west? In such a situation the mean resultant length will equal zero. It is therefore always recommended to plot the distribution of circular data before drawing any conclusions about the concentration or location of datapoints. 
 
 ## Conclusion
 
 The mean direction (\(\bar{\theta}\)), mean resultant length (\(\bar{R}\)), variance (\(V_m\)) and standard deviation (\(v\)) are ways to describe location and spread in circular data. These measures are however not always reliable. For that reason, it is recommended one always plots their data and inspects it visually as well. In the next tutorial, we will discuss why these measures are not always reliable by looking into circular distributions. We will also cover how to plot circular data in R.
 
 ## References
-Fisher, N. I. (1995). *Statistical analysis of circular data.* Cambridge University Press.
+The equations used in this tutorial can, for example, be found in the book by Fisher (chapter 2.3). Fisher, N. I. (1995). *Statistical analysis of circular data.* Cambridge University Press.
