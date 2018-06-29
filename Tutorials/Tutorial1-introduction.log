@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.3)  29 JUN 2018 12:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (MiKTeX 2.9.6630 64-bit) (preloaded format=pdflatex 2018.4.3)  29 JUN 2018 12:35
 entering extended mode
 **./Tutorial1-introduction.tex
 (Tutorial1-introduction.tex
@@ -971,14 +971,14 @@ G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 456.
 )
 <C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/circular-data-examples.jpg
-, id=23, 676.02562pt x 218.31563pt>
+, id=23, 676.02562pt x 220.57407pt>
 File: C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/circular-data-example
 s.jpg Graphic file (type jpg)
 <use C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/circular-data-examples
 .jpg>
 Package pdftex.def Info: C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/ci
 rcular-data-examples.jpg  used on input line 112.
-(pdftex.def)             Requested size: 501.89125pt x 162.08069pt.
+(pdftex.def)             Requested size: 501.89125pt x 163.75739pt.
 
 Overfull \hbox (32.13623pt too wide) in paragraph at lines 112--112
  [] 
@@ -1077,7 +1077,7 @@ bx12.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/public/lm
 ic/lm/lmr17.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1/pu
 blic/lm/lmri10.pfb><C:/Users/Icky/AppData/Local/Programs/MiKTeX 2.9/fonts/type1
 /public/lm/lmsy10.pfb>
-Output written on Tutorial1-introduction.pdf (3 pages, 444218 bytes).
+Output written on Tutorial1-introduction.pdf (3 pages, 444656 bytes).
 PDF statistics:
  80 PDF objects out of 1000 (max. 8388607)
  9 named destinations out of 1000 (max. 500000)
