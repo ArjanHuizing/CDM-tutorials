@@ -37,7 +37,7 @@ The researchers used this data to test whether participants were capable of lear
 
 
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, out.width = '500px', fig.align="center"}
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, out.height="200px", fig.align="center"}
 include_graphics(path = "C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/mazes-warren.jpg")
 ```
 
@@ -49,12 +49,13 @@ include_graphics(path = "C:/Users/Icky/Documents/GitHub/CDM-tutorials/Images/maz
 
 A subset of the data is displayed below, containing the angular error found in the standard trials of 20 participants. Here we see a noticable difference in direction and spread between the Euclidian maze and the non-Euclidian maze. Using circular data models, the researchers were able to - among other things - analyze if there were significant group differences in circular outcomes.
 
-```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE}
-par(mfrow=c(1,2))
-plot(as.circular(Maps[Maps$Maze == 0 & Maps$Trial.type == 0, 5], units = "degrees"), main = "Euclidian maze")
-plot(as.circular(Maps[Maps$Maze == 1 & Maps$Trial.type == 0, 5], units = "degrees"), main = "Non-Euclidian maze")
+```{r echo=FALSE, message=FALSE, warning=FALSE, paged.print=FALSE, fig.height=4}
+par(mfrow=c(1,2), mar = c(1,1,1,1))
+plot(as.circular(Maps[Maps$Maze == 0 & Maps$Trial.type == 0, 5], units = "degrees"), main = "")
+plot(as.circular(Maps[Maps$Maze == 1 & Maps$Trial.type == 0, 5], units = "degrees"), main = "")
 ```
 
+*The dataset for the Euclidian maze (left) and non-Euclidian maze (right) plotted on the circle.*
 
 &nbsp;
 

@@ -13,27 +13,27 @@ library(circular)
 
 In the previous tutorial we discussed what circular data is and how it is measured. In this tutorial we will start analyzing circular data. For the analyses of circular data we will be using the open source programming language R. R is available for Windows, MacOS and Linux, and can be downloaded from <https://cran.r-project.org/>. 
 
-&nbsp;
-
+\
 One tool that can be used to analyze and plot circular data is the package `circular` in R. To install and load this package the following code can be used
 ```{r message=FALSE, warning=FALSE, eval=FALSE}
 install.packages("circular")
 library(circular)
 ```
-
+\
 For circular data there are two units of measurement that are commonly used, degrees and radians. A circle has a total of 360 degrees, or equivalently, a total of \(2 \pi\) (\(\approx 6.28\)) radians. Values cannot exceed this total, and if they do most functions will automatically scale them back to the circular range (e.g. 361 degrees equals 1 degree). To showcase this, we specify one datasets containing the observations \([0,2,4,6,8]\). We can enter this data into R using the function `as.circular`. The argument `units` can be used to specify the measurement type in either degrees or radians.
+
 ```{r echo=TRUE, message=FALSE, warning=FALSE}
 data.deg <- as.circular(c(0, 2, 4, 6, 8), units = "degrees")
 data.rad <- as.circular(c(0, 2, 4, 6, 8), units = "radians")
 ```
 
-```{r echo=FALSE}
-par(mfrow = c(1,2))
-plot(data.deg, main = "Observations in degrees")
-plot(data.rad, main = "Observations in radians")
+```{r echo=FALSE, fig.height=4.5, fig.align='center'}
+par(mfrow = c(1,2), mar = c(1,1,1,1))
+plot(data.deg, main = "", shrink = 0.9, tol = 0.1)
+plot(data.rad, main = "", shrink = 0.9, tol = 0.1)
 ```
 
-*The dataset in degrees and the dataset in radians plotted on the circle.*
+*The dataset in degrees (left) and the dataset in radians (right) plotted on the circle.*
 
 If the data is measured in degrees the observations will be concentrated on one side of the circle, as the circular range extends from zero to 360. If the data is measured in radians however, the data will be spread across the entire circular range of \(2\pi\). The value of 8 will exceed this maximum and is thus calculated as `r round(8%%(2*pi), digits = 2)`.
 
@@ -78,24 +78,20 @@ As we can see, the mean direction of values in radians are very different from t
 The mean direction is a measure of location, just like the mean in linear data. Similarly, we can also obtain descriptives that are a measure of spread or concentration. These indicate how much variation there is in observations, similar to the variance in linear data.
 
 The mean resultant length (\(\bar{R}\)) is one such measure, and is obtained by \(\bar{R} = R/n\), where \(R = \sqrt{C^2 + S^2} \) and \(n\) is the number of observations.
-This is a measure of *concentration* that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread in observed values. 
-
-The mean resultant length can be calculated using the function `rho.circular`. 
+This is a measure of *concentration* that can take on values between zero and one. The value 1 indicates that all values of the dataset are concentrated at a single location. A value close to zero indicates a higher spread in observed values. The mean resultant length can be calculated using the function `rho.circular`. 
 
 ```{r}
 rho.circular(data.rad)
 ```
-
 A mean resultant length of \(\bar{R} \approx .228\) indicates a somewhat low concentration.
 
-Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard deviation. 
+&nbsp;
 
-Since the mean resultant length is a measure of concentration and the variance is a measure of spread, the variance in circular data (\(V_m\)) is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \bar{R}\). 
+Other than the mean direction and mean resultant length, we can also obtain a circular variance and a circular standard deviation. Since the mean resultant length is a measure of concentration and the variance is a measure of spread, the variance in circular data (\(V_m\)) is simply 1 minus the mean resultant length. Its interpretation is opposite to that of the mean resultant length. The function `var.circular` will give you this value, but it is also easily obtained by \(1 - \bar{R}\). 
 
 ```{r}
 var(data.rad)
 ```
-
 
 The standard deviation (\(v\)) is *not* obtained using the square root of the variance, but rather using \((-2 \log\ (1-var))^{1/2}\). The function `sd.circular` in R provides this value.
 
